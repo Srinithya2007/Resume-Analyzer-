@@ -1,0 +1,351 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Resume Analyzer Dashboard - compare resume keywords with job requirements." />
+  <title>ResumeIQ | Resume Analyzer Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a href="#" class="brand">
+        <span class="brand-icon">R</span>
+        <span>Resume<span class="brand-accent">IQ</span></span>
+      </a>
+
+      <p class="nav-label">WORKSPACE</p>
+      <nav class="navigation">
+        <a class="nav-item active" href="#dashboard">
+          <span>▦</span> Dashboard
+        </a>
+        <a class="nav-item" href="#analyzer">
+          <span>⌕</span> Resume Analyzer
+        </a>
+        <a class="nav-item" href="#results">
+          <span>◷</span> Analysis Results
+        </a>
+        <a class="nav-item" href="#history">
+          <span>▤</span> Report History
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="sidebar-tip">
+          <span class="tip-icon">✦</span>
+          <h3>Career tip</h3>
+          <p>Customize your resume for each job description to highlight relevant skills.</p>
+        </div>
+        <p class="sidebar-footer">ResumeIQ · Front-end project</p>
+      </div>
+    </aside>
+
+    <main class="main-content" id="dashboard">
+      <header class="topbar">
+        <button class="menu-button" id="menuButton" aria-label="Toggle navigation">☰</button>
+        <div>
+          <p class="eyebrow">WORKSPACE / OVERVIEW</p>
+          <h1>Resume Analyzer</h1>
+        </div>
+        <div class="topbar-right">
+          <span class="status-dot"></span>
+          <span class="status-text">Ready to analyze</span>
+          <div class="avatar">R</div>
+        </div>
+      </header>
+
+      <section class="welcome-section">
+        <div>
+          <p class="eyebrow">YOUR CAREER WORKSPACE</p>
+          <h2>Make your resume <span class="gradient-text">job-ready.</span></h2>
+          <p class="welcome-description">
+            Compare your resume with a job description and discover relevant
+            keywords, missing skills, and areas to improve.
+          </p>
+        </div>
+        <div class="welcome-art" aria-hidden="true">
+          <div class="art-document">
+            <span class="art-line long"></span>
+            <span class="art-line"></span>
+            <span class="art-line short"></span>
+            <span class="art-check">✓</span>
+          </div>
+          <div class="art-orbit orbit-one"></div>
+          <div class="art-orbit orbit-two"></div>
+        </div>
+      </section>
+
+      <section class="stats-grid" aria-label="Analysis statistics">
+        <article class="stat-card">
+          <div class="stat-top">
+            <span class="stat-icon purple">⌕</span>
+            <span class="stat-label">Total Analyses</span>
+          </div>
+          <h3 id="totalAnalyses">0</h3>
+          <p>Reports saved in this browser</p>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-top">
+            <span class="stat-icon green">✓</span>
+            <span class="stat-label">Latest Match</span>
+          </div>
+          <h3 id="latestMatch">—</h3>
+          <p>Most recent match score</p>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-top">
+            <span class="stat-icon orange">✦</span>
+            <span class="stat-label">Matched Keywords</span>
+          </div>
+          <h3 id="totalMatched">0</h3>
+          <p>From your latest analysis</p>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-top">
+            <span class="stat-icon blue">↗</span>
+            <span class="stat-label">Missing Keywords</span>
+          </div>
+          <h3 id="totalMissing">0</h3>
+          <p>From your latest analysis</p>
+        </article>
+      </section>
+
+      <section class="analyzer-section" id="analyzer">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">START HERE</p>
+            <h2>Analyze your resume</h2>
+            <p class="section-description">Add your resume text and the job description you want to target.</p>
+          </div>
+          <button class="button button-light" id="sampleButton">Use sample data</button>
+        </div>
+
+        <form id="analyzerForm">
+          <div class="input-grid">
+            <article class="input-card">
+              <div class="input-heading">
+                <span class="input-icon">▤</span>
+                <div>
+                  <h3>Your resume</h3>
+                  <p>Paste text or upload a .txt file</p>
+                </div>
+              </div>
+
+              <label for="resumeFile" class="upload-area">
+                <span class="upload-symbol">↑</span>
+                <span><strong>Choose a text file</strong> or click to browse</span>
+                <small id="fileName">TXT files only · Max 1 MB</small>
+              </label>
+              <input type="file" id="resumeFile" accept=".txt,text/plain" hidden />
+
+              <label class="field-label" for="resumeText">Resume content</label>
+              <textarea id="resumeText" rows="11"
+                placeholder="Paste your resume here...&#10;&#10;Example: Python, HTML, CSS, JavaScript, React, Git, project experience..." required></textarea>
+              <div class="textarea-footer">
+                <span id="resumeCharCount">0 characters</span>
+                <button type="button" class="text-button" id="clearResume">Clear text</button>
+              </div>
+            </article>
+
+            <article class="input-card">
+              <div class="input-heading">
+                <span class="input-icon job-icon">⌑</span>
+                <div>
+                  <h3>Job description</h3>
+                  <p>Paste the job requirements</p>
+                </div>
+              </div>
+
+              <div class="job-hint">
+                <span>✦</span>
+                Include the role, required skills, tools, and responsibilities for a more useful comparison.
+              </div>
+
+              <label class="field-label" for="jobText">Job description content</label>
+              <textarea id="jobText" rows="11"
+                placeholder="Paste the target job description here...&#10;&#10;Example: Looking for a junior developer with JavaScript, React, HTML, CSS, Git, and problem-solving skills..." required></textarea>
+              <div class="textarea-footer">
+                <span id="jobCharCount">0 characters</span>
+                <button type="button" class="text-button" id="clearJob">Clear text</button>
+              </div>
+            </article>
+          </div>
+
+          <div class="form-footer">
+            <p><span class="privacy-icon">◈</span> Analysis runs in your browser. Your text is not sent to a server.</p>
+            <button type="submit" class="button button-primary" id="analyzeButton">
+              Analyze Resume <span>→</span>
+            </button>
+          </div>
+          <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="results-section" id="results">
+        <div class="section-heading results-heading">
+          <div>
+            <p class="eyebrow">YOUR INSIGHTS</p>
+            <h2>Analysis results</h2>
+            <p class="section-description">Your results will appear here after you run an analysis.</p>
+          </div>
+          <button class="button button-light" id="downloadButton" disabled>↓ Download report</button>
+        </div>
+
+        <div id="emptyResults" class="empty-results">
+          <div class="empty-icon">⌕</div>
+          <h3>No analysis yet</h3>
+          <p>Enter your resume and a job description above, then select Analyze Resume.</p>
+        </div>
+
+        <div id="resultsContent" hidden>
+          <div class="results-grid">
+            <article class="result-card score-card">
+              <div class="card-heading">
+                <div>
+                  <h3>Resume match score</h3>
+                  <p>Based on recognized keyword overlap</p>
+                </div>
+                <span class="mini-badge">Keyword analysis</span>
+              </div>
+              <div class="score-layout">
+                <div class="score-ring" id="scoreRing">
+                  <div class="score-ring-inner">
+                    <strong id="scoreValue">0%</strong>
+                    <span>Match score</span>
+                  </div>
+                </div>
+                <div class="score-copy">
+                  <h4 id="scoreTitle">Ready to improve?</h4>
+                  <p id="scoreDescription">Run your first analysis to see your results.</p>
+                </div>
+              </div>
+              <div class="score-progress-track">
+                <div class="score-progress" id="scoreProgress"></div>
+              </div>
+              <div class="score-legend">
+                <span><i class="legend-dot matched-dot"></i>Matched keywords</span>
+                <span><i class="legend-dot missing-dot"></i>Missing keywords</span>
+              </div>
+            </article>
+
+            <article class="result-card">
+              <div class="card-heading">
+                <div>
+                  <h3>Keyword breakdown</h3>
+                  <p>Recognized skills in the job description</p>
+                </div>
+              </div>
+              <div class="keyword-summary">
+                <div class="keyword-metric">
+                  <span>Matched</span>
+                  <strong id="matchedCount">0</strong>
+                </div>
+                <div class="keyword-metric">
+                  <span>Missing</span>
+                  <strong id="missingCount">0</strong>
+                </div>
+                <div class="keyword-metric">
+                  <span>Job skills</span>
+                  <strong id="requiredCount">0</strong>
+                </div>
+              </div>
+              <div class="keyword-bar-track">
+                <div class="keyword-bar-matched" id="matchedBar"></div>
+                <div class="keyword-bar-missing" id="missingBar"></div>
+              </div>
+              <div class="keyword-legend">
+                <span><i class="legend-dot matched-dot"></i>Found in resume</span>
+                <span><i class="legend-dot missing-dot"></i>Not found</span>
+              </div>
+            </article>
+          </div>
+
+          <div class="results-grid lower-results">
+            <article class="result-card">
+              <div class="card-heading">
+                <div>
+                  <h3>Matched keywords</h3>
+                  <p>Recognized skills found in both texts</p>
+                </div>
+                <span class="count-pill green-pill" id="matchedPill">0</span>
+              </div>
+              <div id="matchedKeywords" class="keyword-list">
+                <p class="muted">No results yet.</p>
+              </div>
+            </article>
+
+            <article class="result-card">
+              <div class="card-heading">
+                <div>
+                  <h3>Skills to review</h3>
+                  <p>Skills mentioned in the job but not found in your resume</p>
+                </div>
+                <span class="count-pill orange-pill" id="missingPill">0</span>
+              </div>
+              <div id="missingKeywords" class="keyword-list">
+                <p class="muted">No results yet.</p>
+              </div>
+            </article>
+          </div>
+
+          <article class="result-card recommendations-card">
+            <div class="card-heading">
+              <div>
+                <h3>Personalized improvement checklist</h3>
+                <p>Suggestions generated from your current text analysis</p>
+              </div>
+            </div>
+            <div id="recommendations" class="recommendations-list"></div>
+          </article>
+
+          <p class="disclaimer">
+            This score measures keyword overlap only. It is not an ATS compatibility test,
+            a measure of your actual skills, or a prediction of hiring outcomes.
+            Add skills to your resume only when they accurately reflect your experience.
+          </p>
+        </div>
+      </section>
+
+      <section class="history-section" id="history">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">YOUR ACTIVITY</p>
+            <h2>Recent reports</h2>
+            <p class="section-description">Your latest analyses saved in this browser.</p>
+          </div>
+          <button class="button button-light" id="clearHistoryButton">Clear history</button>
+        </div>
+        <div class="history-card">
+          <div class="history-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Analysis</th>
+                  <th>Date</th>
+                  <th>Match score</th>
+                  <th>Keywords found</th>
+                </tr>
+              </thead>
+              <tbody id="historyTable">
+                <tr><td colspan="4" class="empty-history">No reports saved yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <footer class="page-footer">
+        <span>ResumeIQ Dashboard</span>
+        <span>Built with HTML, CSS & JavaScript</span>
+      </footer>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
