@@ -1,145 +1,114 @@
+# 📄 Resume Analyzer Dashboard
 
-# Resume Analyzer Dashboard
+A modern and responsive **Resume Analyzer Dashboard** built using HTML, CSS, and JavaScript. This project helps users compare resume content with a job description, identify matching and missing keywords, calculate a keyword match score, and receive suggestions for improvement.
 
-A modern, responsive Resume Analyzer Dashboard built using HTML, CSS, and JavaScript. It compares resume text with a job description to identify recognized keyword matches, missing skills, and areas for improvement.
+## 🚀 Project Overview
 
-## Features
+The Resume Analyzer Dashboard provides a simple interface where users can paste their resume content and a job description to analyze keyword compatibility. It is designed as a beginner-friendly frontend project to demonstrate web development and JavaScript skills.
 
-- Modern and responsive dashboard interface
-- Resume text input and `.txt` file upload
-- Job description input
-- Keyword-based resume matching score
-- Matched and missing skill identification
-- Visual score ring and keyword breakdown
-- Resume improvement recommendations
-- Sample resume and job description
-- Downloadable analysis report
-- Recent analysis history using browser LocalStorage
-- Clear resume text, job description, and saved history
-- Responsive mobile navigation
-- Client-side processing without a backend
+## ✨ Features
 
-## Technologies Used
+- 📊 **Resume Match Score** – Calculates keyword overlap between resume content and a job description.
+- 🔍 **Keyword Matching** – Identifies skills and keywords found in both texts.
+- ⚠️ **Missing Keywords** – Highlights recognized job-related keywords missing from the resume.
+- 💡 **Improvement Suggestions** – Provides suggestions to improve resume content.
+- 📁 **Text File Upload** – Supports uploading a `.txt` resume file.
+- 📥 **Download Report** – Allows users to download the analysis report.
+- 🕘 **Analysis History** – Stores recent analysis results in browser LocalStorage.
+- 📱 **Responsive Design** – Works across desktop, tablet, and mobile screens.
+- 🎨 **Modern Dashboard UI** – Clean layout with statistics, cards, and a score display.
 
-- HTML5
-- CSS3
-- JavaScript
-- Browser FileReader API
-- LocalStorage API
-- Blob API for report downloads
+## 🛠️ Technologies Used
 
-## Project Structure
+- **HTML5** – Page structure
+- **CSS3** – Styling and responsive layout
+- **JavaScript** – Analysis logic and interactive features
+- **LocalStorage** – Stores analysis history in the browser
+
+## 📂 Project Structure
 
 ```text
 Resume-Analyzer-Dashboard/
+│
 ├── index.html
 ├── style.css
 ├── script.js
 └── README.md
 ```
 
-## Getting Started
+## ⚙️ How to Run the Project
 
-### 1. Clone the repository
+1. Download or clone this repository.
+2. Open the project folder in Visual Studio Code.
+3. Make sure `index.html`, `style.css`, and `script.js` are in the same folder.
+4. Install the **Live Server** extension in VS Code if you do not already have it.
+5. Right-click `index.html`.
+6. Select **Open with Live Server**.
+7. Enter your resume content and the job description.
+8. Click **Analyze Resume** to view the results.
 
-Replace `YOUR-USERNAME` with your GitHub username.
-
-```bash
-git clone https://github.com/YOUR-USERNAME/Resume-Analyzer-Dashboard.git
-```
-
-### 2. Open the project
-
-```bash
-cd Resume-Analyzer-Dashboard
-code .
-```
-
-You can also open the project folder directly in Visual Studio Code.
-
-### 3. Run the application
-
-1. Open `index.html` in Visual Studio Code.
-2. Right-click the file.
-3. Select **Open with Live Server** if the Live Server extension is installed.
-4. Otherwise, open `index.html` in your web browser.
-
-No package installation or backend server is required.
-
-## How to Use
+## 📝 How to Use
 
 1. Open the Resume Analyzer Dashboard.
-2. Paste your resume text into the resume section, or upload a `.txt` file.
-3. Paste the target job description into the job description section.
-4. Click **Analyze Resume**.
+2. Paste your resume content into the resume text area.
+3. Paste the target job description into the job description area.
+4. Click the **Analyze Resume** button.
 5. Review the keyword match score.
-6. Check the matched keywords and skills to review.
-7. Read the improvement checklist.
-8. Download the report if you want a copy.
-9. View recent analyses in the report history section.
+6. Check matched and missing keywords.
+7. Read the improvement suggestions.
+8. Download the report or review previous analysis history.
 
-You can select **Use sample data** to test the dashboard.
+## 🧮 How the Match Score Works
 
-## How It Works
+The project calculates a keyword overlap score using recognized skills found in the job description.
 
-The application uses a predefined collection of technical and professional skills.
-
-It checks which recognized skills appear in the job description and compares them with the skills detected in the resume.
-
-The match score is calculated as:
+**Formula:**
 
 ```text
-Match Score = (Matched Job Keywords / Recognized Job Keywords) × 100
+Match Score = (Matched Recognized Job Skills / Total Recognized Job Skills) × 100
 ```
 
-The result is rounded to the nearest whole percentage.
+The score is a simple keyword-based estimate. It does not measure actual professional ability, guarantee ATS compatibility, or predict hiring outcomes.
 
-If no recognized skills are found in the job description, the score is shown as 0%.
+## 🔒 Privacy
 
-## Limitations
+- Resume analysis is performed in the browser using JavaScript.
+- Analysis history is stored in browser LocalStorage.
+- The project does not require a backend server or database.
+- Clearing browser data may remove saved analysis history.
 
-- This is a front-end demonstration project.
-- The application currently accepts `.txt` files only.
-- PDF and DOCX parsing are not included.
-- The keyword list is predefined and may not recognize every skill.
-- The score measures keyword overlap, not the quality of a resume or a person's abilities.
-- Reports are stored in the current browser only.
-- LocalStorage history is not synchronized across devices.
-- The application does not connect to an AI model or an Applicant Tracking System (ATS).
+## 🔮 Future Enhancements
 
-## Future Enhancements
-
-- PDF and DOCX resume parsing
-- Custom skill categories
-- Resume section completeness checks
-- Integration with a secure AI backend
-- User authentication and cloud-based history
-- More detailed keyword analysis
+- PDF and DOCX resume upload support
+- AI-powered resume feedback
+- Resume section detection
+- Job-specific skill recommendations
+- Resume improvement suggestions based on experience level
+- Backend integration and user authentication
 - Export reports as PDF
 
-## Learning Outcomes
+## 🎯 Learning Outcomes
 
-This project demonstrates practical skills in:
+Through this project, I practiced:
 
+- DOM manipulation using JavaScript
+- Text processing and keyword matching
+- Event handling and file input
+- LocalStorage integration
 - Responsive web design
-- DOM manipulation
-- JavaScript event handling
-- String processing and regular expressions
-- File reading in the browser
-- Dynamic UI updates
-- LocalStorage
-- Client-side report generation
+- Creating interactive dashboard components
+- Organizing a frontend project for GitHub
 
-## Live Demo
+## 👩‍💻 Author
 
-After enabling GitHub Pages, add your published link here:
+**Sri Nithya**  
+Bachelor of Computer Applications (BCA)  
+Loganatha Narayanasamy Government Arts and Science College
 
-`https://YOUR-USERNAME.github.io/Resume-Analyzer-Dashboard/`
+## 📄 License
 
-## Author
+This project is created for educational and portfolio purposes. You may adapt it for personal learning and development.
 
-Created as a front-end development portfolio project.
+---
 
-## License
-
-This project is available for learning and portfolio demonstration.
+⭐ If you find this project useful, consider giving the repository a star!
